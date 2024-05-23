@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
 
         // set metodu validate ile öncelik sonralık ilişkisi var diye bu şekilde yapıldı
+        // set metodu validate ten önce çalışır, o nedenle, validasyona password şifreli halde gittiği için geçemiyor
         // validate: [
         //     (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(password),
         //     'Password type is not correct.'

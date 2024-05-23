@@ -25,12 +25,12 @@ module.exports = {
                 }
             }
         */
-        // Kullanıcı ister username ile ister password ile login olabilir
+        // Kullanıcı ister username-password ile ister email-password ile login olabilir
         const { username, email, password } = req.body
 
         if ((username || email) && password) {
 
-            const user = await User.findOne({ $or: [{ username }, { email }] })
+            const user = await User.findOne({ $or: [{ username }, { email }] }) // böyle bi username veya email var mı
 
             if (user && user.password == passwordEncrypt(password)) {
 
