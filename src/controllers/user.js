@@ -43,11 +43,13 @@ module.exports = {
 
         const data = await User.create(req.body)
 
-        //hoşgeldin maili gönderelim
+        //hoşgeldin maili gönderelim, bu fonk 3 parametre alıyordu to, subject ve message
         sendMail(
-            //message
-            data.email,//to
-            'Welcome', //subject
+            //to:
+            data.email,
+            //subject:
+            'Welcome', 
+            //message:
             `
                 <h1>Welcome ${data.username}</h1>
                 <p>Welcome to our API system.</p>

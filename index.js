@@ -52,37 +52,39 @@ app.use(require('./src/middlewares/authentication'))
 app.use(require('./src/middlewares/queryHandler'))
 
 /* ------------------------------------------------------- */
-//* EMAIL
+//* EMAIL 
+// bunu birfonk halinde yazdık index.js te artık yeri yok
 // nodemailer modülü kullanılacak
 // https://www.nodemailer.com/
 // https://www.npmjs.com/package/nodemailer
 // https://ethereal.email/ // fake mail servisi
 
-
+//*NORMAL bir MAIL server ile mail gönderme (gmail, yandex harici gibi)
 // const nodemailer = require('nodemailer')
 // GMAIL, YANDEX gibi hazır servis kullanmıcaksak bu tarz bir mail server kullanabiliriz
-// Create Test (Fake) Account:
+// Create Test (Fake) Account, fake bir mail hesabı oluşturuyoruz;
 // nodemailer.createTestAccount().then((data) => console.log(data))
+// fake mail hesabı bilgileri aşağıda, hesap bilgisini alınca yukardaki kodu yoruma al
 /*
-{e
+{
   user: 'ntqxavoiba6ulmhd@ethereal.email',
   pass: 'wfNZNWMcmPeJhw73qG',
   smtp: { host: 'smtp.ethereal.email', port: 587, scure: false }, //mail gönderme
   imap: { host: 'imap.ethereal.email', port: 993, secure: true }, //mail alma
-  pop3: { host: 'pop3.ethereal.email', port: 995, secure: true }, // mail alma, imap in glişmş hali
+  pop3: { host: 'pop3.ethereal.email', port: 995, secure: true }, // mail alma, imap in gelişmiş hali
   web: 'https://ethereal.email'
 }
 */
 //yukarıdaki bilgiler fake mail bilgileridir
 //fake mail oluştuktan sonra odemailer.createTestAccount().then((data) => console.log(data)) kodunu yoruma aldık
+//herhangi bir mail servisine (gmail, yandex vb farketmez) mail göndereceksek SMTP bilgilerine ihtiyaç duyarız
 
-//Connect to mail server
+//Connect to mail server, mail göndermek için mail server a bağlanmak gerekir, aşağıdaki kod yapıyor bunu
 // const transporter = nodemailer.createTransport({ //transporter mail gönderen objemiz
-//     //mail göndermek için önce mail server ına bağlanmalıyız
 //     // SMTP
 //     host: 'smtp.ethereal.email', //mail göndereceğim server adresi, yukarıdaki fake mail bilgilerinden aldık
 //     port: 587,
-//     scure: false, //alternatifi SSL veya TLS olabilir
+//     secure: false, //alternatifi SSL veya TLS olabilir
 //     auth: {
 //         user: 'ntqxavoiba6ulmhd@ethereal.email',
 //         pass: 'wfNZNWMcmPeJhw73qG'
@@ -90,9 +92,9 @@ app.use(require('./src/middlewares/queryHandler'))
 // })
 // console.log(transporter);
 
-// SEND MAIL
+//* SEND MAIL; artık mail gönderebiliriz;
 // transporter.sendMail({
-//     from: 'ntqxavoiba6ulmhd@ethereal.email', // from yazılmak zorunda değil
+//     from: 'ntqxavoiba6ulmhd@ethereal.email', // from yazılmak zorunda değil, mail kimden gidiyor onu belirtir, buraya başka mail adresi yazarsan spam a düşer
 //     to: 'aliigurel@gmail.com, info.ephesuss@gmail.com', // birden fazla adres yazabiliriz
 //     subject: 'Hello',
 //     text: 'Hello There. How are you?',
@@ -103,11 +105,14 @@ app.use(require('./src/middlewares/queryHandler'))
 
 //* Google Mail yani GMAIL servisi
 //* Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
+//gmaile başlamadan önce yukardaki kodları yoruma al
 // const transporter = nodemailer.createTransport({
 //     service: 'gmail',
 //     auth: {
 //         user: 'aliigurel@gmail.com',
 //         pass: 'fduo krkf tgok amdr' //gerçek mail pass imiz değil, gmailden aldık bu şifreyi
+        // browserdan Gmaili aç, Hesabını Yönet -> Security -> Two-Step-Verify -> App-Passwords a gir
+        // Uygulama adına nodemailer yazdık (farketmez), oluştur de şifreyi al
 //     }
 // })
 

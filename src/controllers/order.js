@@ -61,9 +61,9 @@ module.exports = {
 
         //hoşgeldin maili gönderelim
         sendMail(
-            //message
             data.email,//to
             'Siparişiniz Alındı', //subject
+            //Message:
             `
                 <h1>${data.username}</h1>
                 <p>Siparişiniz Alındı.</p>
