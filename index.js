@@ -39,7 +39,7 @@ dbConnection()
 // Accept JSON:
 app.use(express.json())
 
-// Accept Form-Data
+// Accept Form-Data, formlardan gelen verileri kabul et demek
 app.use(express.urlencoded({extended:true}))
 
 // Logger:

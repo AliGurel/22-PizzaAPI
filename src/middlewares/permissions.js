@@ -7,7 +7,7 @@ module.exports = {
 
     isLogin: (req, res, next) => {
 
-        // return next() // test için permissionları pasife almak içn bunu yapabilriz
+        return next() // test için permissionları pasife almak içn bunu yapabilriz
 
         if (req.user && req.user.isActive) {
             next()
@@ -18,6 +18,7 @@ module.exports = {
     },
 
     isAdmin: (req, res, next) => {
+        return next() // test için permissionları pasife almak içn bunu yapabilriz
 
         if (req.user && req.user.isActive && req.user.isAdmin) {
             next()

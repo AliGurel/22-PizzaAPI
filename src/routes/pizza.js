@@ -40,7 +40,7 @@ router.route('/')
     // .post(isAdmin, upload.single('fileInputName'), pizza.create)
     // array, aynı anda birden fazla dosya yüklemek için, tavsiye edilen array dir
     .post(isAdmin, upload.array('images'), pizza.create)
-    //inputun adı nolursa olsun, kaç adet olursa olsun al yükle demek ama tercih edilmez
+    //any(): inputun adı nolursa olsun, kaç adet olursa olsun al yükle demek ama tercih edilmez
     // .post(isAdmin, upload.any(), pizza.create)
 
 router.route('/:id')
