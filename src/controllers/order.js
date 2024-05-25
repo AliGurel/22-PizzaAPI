@@ -65,7 +65,6 @@ module.exports = {
             'Siparişiniz Alındı', //subject
             //Message:
             `
-                <h1>${data.username}</h1>
                 <p>Siparişiniz Alındı.</p>
             `
         )
