@@ -8,6 +8,8 @@
 //pizza route da kullandık bu middleware i 
 //TC de dosya upload ederken Form kısmındaki Files kutucuğu işaretle, altta açılan field name kısmına route da .put(isAdmin, upload.array('images'), pizza.update) kısmında array in içindeki isim neyse o yazılmak zorunda, sonra da dosya seç denip istenen dosya eklenebilir
 
+//dosyaları yükledikten sonra DB ye aktarmak için de Pizza Controller da kodlar yazdık
+
 //*UPLOAD
 //? $ npm i multer
 // https://expressjs.com/en/resources/middleware/multer.html

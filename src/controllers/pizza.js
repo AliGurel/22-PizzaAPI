@@ -70,7 +70,7 @@ module.exports = {
        //upload.single yapıldıysa dosyalar req.file 
        //upload.array veya any yapıldıysa req.files içinde gelir yüklenen dosyalar resimler
 
-        /* dosyalar bu formaata gelir array yapıldıysa
+        /* dosyalar bu formaata gelir upload.array yapıldıysa pizza route ta ki biz array yaptık
             {
                 fieldname: 'images',
                 originalname: 'papagan.jpeg',
@@ -84,11 +84,12 @@ module.exports = {
         */
         // Gelen dosya verilerini DB ye aktarıyoruz
         //önceden yüklenmiş olan resimleri silmemek için;
-        const pizza = await Pizza.findOne({ _id: req.params.id }, {_id:false, images: true}) //güncelleme yapmadan önce pizza datası içinden sadece images verileri gelsin, yani eski resimleri de al db ye aktarmadan önce
+        const pizza = await Pizza.findOne({ _id: req.params.id }, {_id:false, images: true}) //güncelleme yapmadan önce pizza datası içinden sadece images verileri gelsin, id gelmesin, yani eski resimleri de al db ye aktarmadan önce
+        //artık bu pizza değişkeni içinde eğer var idiyse eski pizza resimleri var
 
         for (let file of req.files) { //her bir file dosyasını file isimli değişkene ata
-            //yeni resimleri mevcut piizaa resimlerine ekle
-            // pizza.images.push(file.filename)
+            //yeni resimleri mevcut pizza resimlerine ekle
+            // pizza.images.push(file.filename)//sadece dosya adını ekler
             pizza.images.push('/uploads/' + file.filename) //sadece dosya adını ekleme dosya yolunu da ekle
         }
         //pizza resimlerini req.body e aktar
