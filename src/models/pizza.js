@@ -22,6 +22,7 @@ const PizzaSchema = new mongoose.Schema({
         required: true,
     },
     toppingIds: [ //many-to-many yapmak için sadece array işareti koyuyoruz
+    //one-to-one da unique yazıyoruz
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Topping',
