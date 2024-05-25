@@ -10,6 +10,8 @@
 
 //dosyaları yükledikten sonra DB ye aktarmak için de Pizza Controller da kodlar yazdık
 
+//uploads klaörü içindeki görsellerin FE tarafından tarayıcıda görüntülenmesini sağlamak için ana index.js içine app.use('/uploads', express.static('./uploads') ) kodunu yazdık
+
 //*UPLOAD
 //? $ npm i multer
 // https://expressjs.com/en/resources/middleware/multer.html

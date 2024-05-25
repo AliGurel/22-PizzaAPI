@@ -156,7 +156,7 @@ app.all('/', (req, res) => {
 //*Static Files
 // '/uploads' ile başlayan bir istek urlde gelirse bu dosya seni ilgilendirmez bu bir static dosyadır, bu dosyaları '/uploads' klasöründe bulabilirsin demek
 //app.use /uploads ile başlayan tüm url ler demek miş
-app.use('/uploads', express.static('/uploads') )
+app.use('/uploads', express.static('./uploads') )
 
 /* ------------------------------------------------------- */
 
