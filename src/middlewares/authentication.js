@@ -7,7 +7,7 @@ const Token = require('../models/token')
 const jwt = require('jsonwebtoken')
 
 module.exports = async (req, res, next) => {
-
+    // tokrn verisi headers tan authorization başlığı altında geliyordu;
     const auth = req.headers?.authorization // Token ...tokenKey...
     const tokenKey = auth ? auth.split(' ') : null // ['Token', '...tokenKey...']
 
@@ -18,6 +18,10 @@ module.exports = async (req, res, next) => {
 
             const tokenData = await Token.findOne({ token: tokenKey[1] }).populate('userId')
             req.user = tokenData ? tokenData.userId : false
+            // Token doğruysa sistemin her tarafında her sayafaya, user datasını gönderiyoruz
+            // tokenData.userId içinde, yukarıda populate yapıldığı için user bilgileri olacak
+            // çünkü tokenData modeldeki userId fieldı User modele REFerans ediliyor
+            // eğer populate yapmadan tokenData ? tokenData.userId deseydik bu sefer sadece ID gelirdi
 
         } else if (tokenKey[0] == 'Bearer') {
         //JWT access token
